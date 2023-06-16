@@ -1,0 +1,289 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 0;
+}
+
+.navbar .left {
+    font-size: 1.4rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .right {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .right a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar .right a:hover {
+    text-decoration: underline;
+}
+
+.navbar .right img {
+    width: 24px;
+    height: 24px;
+}
+
+.navbar .hamburger {
+    width: 50px;
+    height: 50px;
+    display: none;
+    cursor: pointer;
+}
+
+.mobileNav {
+    width: 80px;
+    height: 100vh;
+    padding: 16px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -160px;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.mobileNav a {
+    text-decoration: none;
+    color: black;
+    margin: 16px 0;
+}
+
+.mobileNav a:hover {
+    text-decoration: underline;
+}
+
+.mobileNav img {
+    width: 24px;
+    height: 24px;
+}
+
+.openMobileNav {
+    transform: translateX(-160px);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    background-color: black;
+    width: 36px;
+    height: 4px;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-areas: 
+    "nazare nazare tree"
+    "nazare nazare track"
+    "mush wave track"
+    "mush wave track"
+    "nazare2 tree2 tree2";
+
+    grid-gap: 12px;
+
+    width: 100%;
+}
+
+#nazare {
+    grid-area: nazare;
+}
+
+#nazare2 {
+    grid-area: nazare2;
+}
+
+#mush {
+    grid-area: mush;
+}
+
+#track {
+    grid-area: track;
+}
+
+#tree {
+    grid-area: tree;
+}
+
+#tree2 {
+    grid-area: tree2;
+}
+
+#wave {
+    grid-area: wave;
+}
+
+.project {
+    /* width: 500px; */
+    position: relative;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project .overlay {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #343434;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.project .overlay:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    padding: 64px;
+}
+
+@media only screen and (max-width: 1100px){
+    .project-grid {
+        grid-template-areas: 
+        "nazare nazare"
+        "mush wave"
+        "tree tree"
+        "track nazare2";
+    }
+
+    #tree2 {
+        display: none;
+    }
+
+    .main-container {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .navbar {
+        width: 100%;
+        padding: 26px 20px;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background-color: white;
+    }
+
+    .navbar .right {
+        display: none;
+    }
+
+    .navbar .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .project-grid {
+        margin-top: 100px;
+
+        max-width: 100%;
+        
+        grid-template-areas: 
+        "nazare nazare"
+        "mush wave"
+        "tree tree"
+        "track track"
+        "nazare2 nazare2";
+    }
+
+    #tree2 {
+        display: none;
+    }
+
+    .project .overlay {
+        font-size: 1rem;
+    }
+}
+
+/* ANIMATION */
+
+.animateBar1 {
+    animation: flipbar1 1s;
+    /* animation-fill-more: forwards = whatever happens at the end of the animation will be persisted. Can be added in the shorthand form. */
+    animation-fill-mode: forwards;
+}
+
+.animateBar2 {
+    animation: fadebar2 1s;
+    animation-fill-mode: forwards;
+}
+
+.animateBar3 {
+    animation: flipbar3 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flipbar1 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(45deg) translate(4px, 10px);
+    }
+}
+
+@keyframes fadebar2 {
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes flipbar3 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(4px, -10px);
+    }
+}
